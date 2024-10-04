@@ -1,25 +1,25 @@
-import Profile from './Profile/Profile';
-import Statistics from './Statistics/Statistics';
-import FriendList from './FriendList/FriendList';
-import TransactionHistory from './TransactionHistory/TransactionHistory';
-import user from '../data/user.json';
-import data from '../data/data.json';
-import friends from '../data/friends.json';
-import transaction from '../data/transactions.json';
+import { Route, Routes } from 'react-router-dom';
+import { Layout } from './components/layout/Layout';
+import Home from './pages/home/Home';
+import AboutMe from './pages/about_me/About_me';
+import Services from './pages/services/Services';
+import Rewiews from './pages/rewiews/Reviews';
+import Articles from './pages/articles/Articles';
+import Information from './pages/information/Information';
 
 export const App = () => {
   return (
     <>
-      <Profile
-        username={user.username}
-        tag={user.tag}
-        location={user.location}
-        avatar={user.avatar}
-        stats={user.stats}
-      />
-      <Statistics title="Upload stats" stats={data} />
-      <FriendList friends={friends} />
-      <TransactionHistory items={transaction} />
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="about_me" element={<AboutMe />} />
+          <Route path="reviews" element={<Rewiews />} />
+          <Route path="services" element={<Services />} />
+          <Route path="information" element={<Information />} />
+          <Route path="articles" element={<Articles />} />
+        </Route>
+      </Routes>
     </>
   );
 };
